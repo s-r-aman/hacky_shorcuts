@@ -1,4 +1,2 @@
-﻿F12::
-  Input, yolo
-  MsgBox, yolo
-return
+﻿#Include, secrets.ahk
+::hmm::s.r.aman.sra@gmail.com

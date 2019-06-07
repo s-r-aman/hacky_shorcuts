@@ -1,7 +1,6 @@
 ﻿; Running apps on only NUMPAD when is not active Combination
 
 ; CMDER
-NumpadEnd::
 !1::
   IfWinNotExist, ahk_exe ConEmu64.exe
     Run, C:\Users\Aman\AppData\Roaming\Microsoft\Windows\Start Menu\Programs\Cmder.lnk
@@ -16,39 +15,35 @@ NumpadEnd::
 return
 
 ;Chrome
-NumpadDown::
 !2::
-  IfWinNotExist, ahk_exe chrome.exe
-    Run, chrome.exe
-  if WinActive("ahk_exe chrome.exe")
+  IfWinNotExist, ahk_exe brave.exe
+    Run, C:\Program Files (x86)\BraveSoftware\Brave-Browser\Application\brave.exe
+  if WinActive("ahk_exe brave.exe")
     Sendinput ^{tab}
   else
-    WinActivate ahk_exe chrome.exe
+    WinActivate ahk_exe brave.exe
 return
 
-;Typora
-NumpadPgdn::
+;Toggle
 !3::
-  IfWinNotExist, ahk_exe Typora.exe
-    Run, Typora.exe
+  IfWinNotExist, ahk_exe TogglDesktop.exe
+    Run, C:\Users\Aman\AppData\Local\TogglDesktop\TogglDesktop.exe
   else 
   {
-    GroupAdd, typorians, ahk_exe Typora.exe
-    if WinActive("ahk_exe Typora.exe")
-      GroupActivate, typorians, r
+    GroupAdd, togglians, ahk_exe TogglDesktop.exe
+    if WinActive("ahk_exe TogglDesktop.exe")
+      GroupActivate, togglians, r
     else
-      WinActivate, ahk_exe Typora.exe
+      WinActivate, ahk_exe TogglDesktop.exe
   }  
 return
 
 ;Notion
-NumpadLeft::
 !4::
 Run, C:\Users\Aman\AppData\Local\Programs\Notion\Notion.exe
 return
 
 ;FL Studio
-NumpadClear::
 !5::
   IfWinNotExist, ahk_exe FL64.exe
     Run, C:\Program Files (x86)\Image-Line\FL Studio 20\FL64.exe
@@ -64,9 +59,8 @@ return
 
 ;Spotify
 !6::
-NumpadRight::
   IfWinNotExist, ahk_exe spotify.exe
-    Run, spotify.exe
+    Run, C:\Users\Aman\AppData\Roaming\Spotify\Spotify.exe
   if WinActive("ahk_exe spotify.exe")
     return
   else
@@ -74,20 +68,34 @@ NumpadRight::
 return
 
 ; MS To-Do
-NumpadHome::
 !7::
   run C:\Users\Aman\Desktop\Microsoft To-Do.lnk
   return
 
-; Downloads folder
-NumpadUp::
-  run, C:\Users\Aman\Downloads
-  Return
+; Signal
+!8::
+  IfWinNotExist, ahk_exe Signal.exe
+    Run, C:\Users\Aman\AppData\Local\Programs\signal-desktop\Signal.exe
+  if WinActive("ahk_exe Signal.exe")
+    return
+  else
+    WinActivate ahk_exe Signal.exe
+return
+
+; Discord
+!9::
+  IfWinNotExist, ahk_exe Discord.exe
+    Run, C:\Users\Aman\AppData\Local\Discord\Update.exe --processStart Discord.exe
+  if WinActive("ahk_exe Discord.exe")
+    return
+  else
+    WinActivate ahk_exe Discord.exe
+return
 
 ; Windows Explorer
 !`::
 IfWinNotExist, ahk_class CabinetWClass
-  Run, explorer.exe
+  Run, C:\Users\Aman\Downloads
 GroupAdd, explorers, ahk_class CabinetWClass
 if WinActive("ahk_exe explorer.exe")
   GroupActivate, explorers, r
@@ -95,18 +103,21 @@ else
   WinActivate ahk_class CabinetWClass
 Return
 
-+Space::
+
+;Searching via KeyPirihna and Everything
+^+Space::
 Send, ^{Space}
 Send, Everything: Search
 Send, {Enter}
 return
 
 ;Search on Google
-
-^+c::
+^+g::
 {
-  Send, ^c
-  Sleep 50
-  Run, http://www.google.com/search?q=%clipboard%
-  Return
+  Send git add .{Enter}
+  sleep 1000
+  InputBox, message, Message, Input the Commit Message
+  Send git commit -am"%message%"{Enter}
+  sleep 1000
+  Send git push{Enter}
 }

@@ -1,15 +1,11 @@
-﻿ScrollLock::
+﻿NumpadClear::
   Send, {Media_Play_Pause}
   return
 
-Insert::
+NumpadRight::
   Send, {Media_Next}
   return
 
-Delete::
+NumpadLeft::
   Send, {Media_Prev}
-  return
-
-Pause::
-  Send, {Volume_Mute}
   return

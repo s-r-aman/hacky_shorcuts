@@ -1,3 +1,6 @@
-﻿#Include, secrtes.ahk
-::s.r.a::myemail
-::addr::address
+﻿#Include, secrets.ahk
+::s.r.a::
+SendInput, %myemail%
+
+::addr::
+SendInput, %adddress%

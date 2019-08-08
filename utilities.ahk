@@ -2,16 +2,7 @@
 
 ; CMDER
 !1::
-  IfWinNotExist, ahk_exe ConEmu64.exe
-    Run, C:\Users\Aman\AppData\Roaming\Microsoft\Windows\Start Menu\Programs\Cmder.lnk
-  else 
-  {
-    GroupAdd, commanders, ahk_class VirtualConsoleClass
-    if WinActive("ahk_class VirtualConsoleClass")
-      GroupActivate, commanders, r
-    else
-      WinActivate, ahk_class VirtualConsoleClass
-  }  
+run C:\Users\Aman\Desktop\Fluent Terminal.lnk
 return
 
 ;Chrome

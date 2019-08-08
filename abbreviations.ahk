@@ -15,8 +15,8 @@ return
   SendInput, %workpassword%
 return
 
-::azu::
-  SendInput, %azureIP%
+::awsip::
+  SendInput, %awsIp%
 return
 
 

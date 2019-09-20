@@ -29,22 +29,27 @@ return
   }  
 return
 
-;Notion
+;Station
 !4::
-Run, C:\Users\Aman\AppData\Local\Programs\Notion\Notion.exe
+  IfWinNotExist, ahk_exe Station.exe
+    Run, C:\Users\Aman\AppData\Local\browserX\Station.exe
+  if WinActive("ahk_exe Station.exe")
+    return
+  else
+    WinActivate ahk_exe Station.exe
 return
 
 ;FL Studio
 !5::
-  IfWinNotExist, ahk_exe FL64.exe
-    Run, C:\Program Files (x86)\Image-Line\FL Studio 20\FL64.exe
+  IfWinNotExist, ahk_exe Code.exe
+    Run, C:\Users\Aman\AppData\Local\Programs\Microsoft VS Code\Code.exe
   else 
   {
-    GroupAdd, fruity, ahk_exe FL64.exe
-    if WinActive("ahk_exe FL64.exe")
-      GroupActivate, fruity, r
+    GroupAdd, Coders, ahk_exe Code.exe
+    if WinActive("ahk_exe Code.exe")
+      GroupActivate, Coders, r
     else
-      WinActivate, ahk_exe FL64.exe
+      WinActivate, ahk_exe Code.exe
   }   
 return
 
@@ -60,7 +65,7 @@ return
 
 ; MS To-Do
 !7::
-  run C:\Users\Aman\Desktop\Microsoft To-Do.lnk
+  run C:\Program Files (x86)\TickTick\TickTick.exe
   return
 
 ; Signal
